@@ -67,20 +67,6 @@ In order to generate a fused RGB PSF you must calibrate each color separately an
 
 Run `RayOptics_Main.m` for each of the three color PSFs. Make sure to enable PSF calibration and disable the multiple data parameter for this calibration step. You will likely have more than one data image you want to reconstruct. After this step is completed, return to "Running Data" above to reconstruct all the data.
 
-```matlab
-%% Runtime params
-multiple_data = 0; % set to one and all data files in the 'data' folder will be reconstructed.
-manual_data_path = 0; % sometimes having a 'data' folder is too restrictive
-
-
-master_path = '/Users/taraurner/Example_Input/green/';
-
-if manual_data_path == 1
-    data_path = [''];
-end        
-% Make sure to set this line to 1 when calibrating the PSF, and 0 after it has been done once, this step takes a while depending on the size of your images and PSF stack.
-image_params.PSF_cal            = 1; 
-```
 You should now have this for each color folder:
 
 ![](Images/2021-12-13-10-20-03.png)
