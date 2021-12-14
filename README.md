@@ -88,3 +88,9 @@ You should now have this for each color folder:
 Next run `RGB_PSF.m`, providing the paths to each color psf, to find the average RGB_PSF.
  
 ![](Images/2021-12-13-11-39-37.png)
+
+Lastly,`rgb_fuse.m` can be run to fuse the 3 color reconstruction. The RGB PSF generated in the previous step can be used to determine pixel size/FOV/resolution etc of the final dataset.
+
+## Troubleshooting RGB PSF Calibration
+- The automatic lens detection sometimes selects slightly different regions in R/G/B calibration images. This will cause problems with image fusion. To avoid this, you can use the best SNR calibration image to calibrate all three PSFs, ensuring that your reconstructions are using the same camera pixel for each color.
+- Depending on the spectrum of the source you use and the sensitivity of the camera, some channels of the RGB PSF may be dimmer than others and hard for the algorithm to track. If you are seeing "jumps" in your PSF, you can add the `positionsxy.mat` structure output from a higher SNR channel to a new folder named `psf_cal_in` in the parent folder of your low SNR data. Then enable `image_params.PSF_cal_in` in `RayOptics_Main.m` when you run psf calibration on the low SNR channel. This will enable an optional step where the code uses the better SNR PSF as a fidiculial marker around which to search for localizing the low SNR psf.
