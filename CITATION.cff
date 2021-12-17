@@ -1,0 +1,8 @@
+@software{3D_Endoscopy,
+  author = {Urner, Tara and Inman, Andrew and Lapid, Ben and Jia, Shu},
+  month = {12},
+  title = {{GLAM Software}},
+  url = {https://github.com/ShuJiaLab/3D_endoscopy},
+  version = {1.0},
+  year = {2021}
+}
